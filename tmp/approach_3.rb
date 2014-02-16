@@ -1,12 +1,12 @@
-class Object
+class Proc
   undef_method :puts
 end
 
 class A < BasicObject
-  def initialize
+  def initialize &block
     hello_world
-    yield if ::Kernel.block_given? 
-    #stdout &block.source
+    #yield if ::Kernel.block_given? 
+    ::Proc.new(&block).call
   end
 
   def hello_world
@@ -23,4 +23,5 @@ end
 
 A.new do
   puts 'test'
+  puts self.instance_method(:puts)
 end
