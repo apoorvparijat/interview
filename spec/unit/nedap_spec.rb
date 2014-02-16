@@ -6,8 +6,20 @@ describe Nedap do
     Nedap.should_not be_nil
   end
 
-  describe '.hello_world!' do
-    it 'should write "Hello World!"' do
+  context '.initialize' do
+    it 'should raise error' do
+      output = StringIO.new
+      expect {
+        Nedap.new(output) do
+          hello_world!
+          puts 'aap'
+        end
+      }.to raise_error
+    end
+  end
+
+  context '.hello_world!' do
+    it 'should print "Hello World!"' do
       output =  StringIO.new 
       Nedap.new(output).hello_world!
       output.seek(0)
