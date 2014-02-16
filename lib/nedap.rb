@@ -11,7 +11,7 @@ class Nedap < BasicObject
   # Method used to initialize the [Nedap] class instance
   # 
   # @param [IO, StringIO] output Reference to the output stream to be used
-  # @param [Proc] &block Block of code to be evaluated with reference to this instance
+  # @param [Proc] block Block of code to be evaluated with reference to this instance
   def initialize(output = ::IO.new(2), &block)
     @output = output
     instance_eval &block if ::Kernel.block_given?
