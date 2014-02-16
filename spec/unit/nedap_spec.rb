@@ -5,7 +5,7 @@ describe Nedap do
     Nedap.should_not be_nil
   end
 
-  describe '.new' do
-    STDOUT.should_receive(:print).with('apoorv')
+  describe '.initialize' do
+    Nedap.new
   end
 end
